@@ -2,7 +2,7 @@ include $(CLEAR_VARS)
 FFMPEG_TCDIR := $(realpath $(shell dirname $(TARGET_TOOLS_PREFIX)))
 FFMPEG_TCPREFIX := $(shell basename $(TARGET_TOOLS_PREFIX))
 # FIXME remove -fno-strict-aliasing once the aliasing violations are fixed
-FFMPEG_COMPILER_FLAGS = $(subst -I ,-I../../,$(subst -include system/core/include/arch/linux-arm/AndroidConfig.h,,$(TARGET_GLOBAL_CFLAGS))) -fno-strict-aliasing -Wno-error=address -Wno-error=format-security
+FFMPEG_COMPILER_FLAGS = $(subst -I ,-I../../,$(subst -include system/core/include/arch/linux-arm/AndroidConfig.h,,$(subst -include build/core/combo/include/arch/linux-arm/AndroidConfig.h,,$(TARGET_GLOBAL_CFLAGS)))) -fno-strict-aliasing -Wno-error=address -Wno-error=format-security
 ifneq ($(strip $(SHOW_COMMANDS)),)
 FF_VERBOSE="V=1"
 endif
